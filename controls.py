@@ -62,10 +62,8 @@ def update_snake(canvas: Canvas, game: Game) -> bool:
     if game.collision():
         return False
 
-    game.snake_move()
-    
     # if it eats an apple
-    if game.head == game.apple_pos:
+    if game.snake_move():
         game.score += 1
         update_apple(canvas, game)
     

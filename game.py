@@ -41,13 +41,12 @@ class Game:
         y += self.y_dir[dir]
         return x < 0 or 16 < x or y < 0 or 14 < y or self.map[y][x]
 
-    def snake_move(self):
+    def snake_move(self) -> bool:
         # add head
         x, y = self.head
         dir = self.direction.pop(0)
         x += self.x_dir[dir]
         y += self.y_dir[dir]
-        print(self.score)
 
         if x < 0 or 16 < x or y < 0 or 14 < y or self.map[y][x]:
             # crashed into something (wall or snake)
@@ -59,7 +58,12 @@ class Game:
             self.head = pos
             self.map[y][x] = 1
     
+            # if it eats an apple
+            if self.head == self.apple_pos:
+                return True
+
             # remove tail
             x, y = self.snake.pop(0)
             self.map[y][x] = 0
+            return False
             
