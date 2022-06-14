@@ -2,7 +2,7 @@ from random import randint
 
 class Game:
     def __init__(self) -> None:
-        self.map = [[False * 17] * 15]
+        self.map = [[False] * 17] * 15
         self.apple_pos = (randint(0, 16), randint(0, 14))
         self.snake = []
         # head of snake
