@@ -34,6 +34,13 @@ class Game:
         self.direction.append(dir)
         self.face = dir
 
+    def collision(self):
+        x, y = self.head
+        dir = self.direction[0]
+        x += self.x_dir[dir]
+        y += self.y_dir[dir]
+        return x < 0 or 16 < x or y < 0 or 14 < y or self.map[y][x]
+
     def snake_move(self):
         # add head
         x, y = self.head

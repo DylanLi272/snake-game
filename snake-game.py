@@ -27,7 +27,9 @@ speed = 300
 def update_snake():
     if len(game.direction) == 0:
         game.direction.append(game.face)
-    controls.update_snake(canvas, game)
+    if not controls.update_snake(canvas, game):
+        # if update_snake returns False, end game
+        return
     window.after(speed, update_snake)
 
 window.after(speed, update_snake)

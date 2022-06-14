@@ -57,8 +57,10 @@ def draw_apple(canvas: Canvas, game: Game):
                             x*cell_size + gap + apple_size, y*cell_size + gap + apple_size, 
                             fill= '#e61515', width=0, tags='apple')
 
-def update_snake(canvas: Canvas, game: Game):
+def update_snake(canvas: Canvas, game: Game) -> bool:
     # collision check
+    if game.collision():
+        return False
 
     game.snake_move()
     
@@ -68,6 +70,8 @@ def update_snake(canvas: Canvas, game: Game):
         update_apple(canvas, game)
     
     draw_snake(canvas, game)
+
+    return True
 
 def update_apple(canvas: Canvas, game: Game):
     game.new_apple()
