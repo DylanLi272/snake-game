@@ -14,7 +14,7 @@ It is assumed that you have a version of Python >=3.0 already installed. Now set
 ```bash
 python3 -m venv .venv
 # activate virtual environment
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ## Playing the game
