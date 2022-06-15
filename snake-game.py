@@ -5,11 +5,14 @@ import time
 
 print('Hello World')
 
+game = Game()
+
 window = Tk()
 window.title('Snake Game')
+score_lbl = Label(master=window, text='Score: ' + str(game.score), font=('Helvetica', 30))
+score_lbl.pack()
 canvas = Canvas(master=window, height=600, width=680)
 canvas.pack()
-game = Game()
 
 controls.init_graphics(canvas, game)
 
@@ -30,6 +33,7 @@ def update_snake():
     if not controls.update_snake(canvas, game):
         # if update_snake returns False, end game
         return
+    score_lbl.config(text='Score: ' + str(game.score))
     window.after(speed, update_snake)
 
 window.after(speed, update_snake)
