@@ -17,7 +17,6 @@ canvas.pack()
 controls.init_graphics(canvas, game)
 
 
-window.bind('<Return>', lambda event: controls.update_apple(canvas, game))
 # 0 - up, 1 - down, 2 - left, 3 - right
 window.bind('<Up>', lambda event: controls.change_dir(canvas, game, 0))
 window.bind('<Down>', lambda event: controls.change_dir(canvas, game, 1))
@@ -25,17 +24,26 @@ window.bind('<Left>', lambda event: controls.change_dir(canvas, game, 2))
 window.bind('<Right>', lambda event: controls.change_dir(canvas, game, 3))
 # window.bind('<Key>', lambda event: print(event.keysym))
 
-speed = 300
+speed = 250
 
 def update_snake():
     if len(game.direction) == 0:
         game.direction.append(game.face)
     if not controls.update_snake(canvas, game):
         # if update_snake returns False, end game
+        canvas.create_text(340, 300, text='Game Over', font=('Helvetica', 60))
         return
     score_lbl.config(text='Score: ' + str(game.score))
     window.after(speed, update_snake)
 
-window.after(speed, update_snake)
+def start_game(event):
+    canvas.delete('start_message')
+    update_snake()
+
+
+canvas.create_text(340, 300, text='Press <Enter>\nto start', font=('Helvetica', 60), tags='start_message', justify=CENTER)
+
+window.bind('<Return>', start_game)
+# window.after(speed, update_snake)
 
 window.mainloop()

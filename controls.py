@@ -13,7 +13,7 @@ def init_graphics(canvas: Canvas, game: Game):
         for x in range(17):
             canvas.create_rectangle(x*cell_size, y*cell_size, 
                                     x*cell_size + cell_size, y*cell_size + cell_size, 
-                                    fill= '#4eb54c' if (x+y) % 2 == 0 else '#40943e', width=0)
+                                    fill= '#4eb54c' if (x+y) % 2 == 0 else '#44a142', width=0)
     draw_snake(canvas, game)
     draw_apple(canvas, game)
 
