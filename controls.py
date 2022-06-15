@@ -27,28 +27,6 @@ def draw_snake(canvas: Canvas, game: Game):
                                 x*cell_size + gap + snake_size, y*cell_size + gap + snake_size, 
                                 fill= '#0f66f2', width=0, tags='snake')
 
-# def animate_snake(canvas: Canvas, game: Game, count: int, direction: int):
-#     canvas.delete('snake')
-#     snake = game.snake
-#     for s in snake:
-#         x, y = s
-#         # 0 - up, 1 - down, 2 - left, 3 - right
-#         if direction == 0:
-#             x_gap = 0
-#             y_gap = count * -4
-#         elif direction == 1:
-#             x_gap = 0
-#             y_gap = count * 4
-#         elif direction == 2:
-#             x_gap = count * -4
-#             y_gap = 0
-#         elif direction == 3:
-#             x_gap = count * 4
-#             y_gap = 0
-#         canvas.create_rectangle(x*cell_size + x_gap, y*cell_size + y_gap, 
-#                                 x*cell_size + x_gap + snake_size, y*cell_size + y_gap + snake_size, 
-#                                 fill= '#0f66f2', width=0, tags='snake')
-
 def draw_apple(canvas: Canvas, game: Game):
     x, y = game.apple_pos
     gap = (cell_size - apple_size) // 2

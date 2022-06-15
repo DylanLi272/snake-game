@@ -20,7 +20,6 @@ class Game:
             x, y = i
             self.map[y][x] = 1
         self.head = self.snake[len(self.snake) - 1]
-        # self.tail = self.snake[0]
 
     # create a new place for the apple
     def new_apple(self):
@@ -48,22 +47,17 @@ class Game:
         x += self.x_dir[dir]
         y += self.y_dir[dir]
 
-        if x < 0 or 16 < x or y < 0 or 14 < y or self.map[y][x]:
-            # crashed into something (wall or snake)
-            # end game
-            print('Snake crashed into something')
-        else:
-            pos = (x, y)
-            self.snake.append(pos)
-            self.head = pos
-            self.map[y][x] = 1
-    
-            # if it eats an apple
-            if self.head == self.apple_pos:
-                return True
+        pos = (x, y)
+        self.snake.append(pos)
+        self.head = pos
+        self.map[y][x] = 1
 
-            # remove tail
-            x, y = self.snake.pop(0)
-            self.map[y][x] = 0
-            return False
+        # if it eats an apple
+        if self.head == self.apple_pos:
+            return True
+
+        # remove tail
+        x, y = self.snake.pop(0)
+        self.map[y][x] = 0
+        return False
             

@@ -1,9 +1,6 @@
 from tkinter import *
 from game import Game
 import controls
-import time
-
-print('Hello World')
 
 game = Game()
 
@@ -22,7 +19,6 @@ window.bind('<Up>', lambda event: controls.change_dir(canvas, game, 0))
 window.bind('<Down>', lambda event: controls.change_dir(canvas, game, 1))
 window.bind('<Left>', lambda event: controls.change_dir(canvas, game, 2))
 window.bind('<Right>', lambda event: controls.change_dir(canvas, game, 3))
-# window.bind('<Key>', lambda event: print(event.keysym))
 
 speed = 250
 
